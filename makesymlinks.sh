@@ -2,13 +2,17 @@
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# To execute it run this
+#   cd ~/dotfiles
+#   chmod +x makesymlinks.sh
+#   ./makesymlinks.sh
 ############################
 
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc oh-my-zsh private scrotwm.conf Xresources"    # list of files/folders to symlink in homedir
+files="config oh-my-zsh tmux.conf zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
