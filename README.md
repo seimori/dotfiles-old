@@ -9,3 +9,5 @@ cd ~/dotfiles
 chmod +x makesymlinks.sh
 ./makesymlinks.sh
 ````
+
+Alernatively I added a makesymlinks_without.sh install. As the name implies, it is for use when you don't want the script to install zsh on top of changing dotfiles (e.g. if used on another person's machine). 
