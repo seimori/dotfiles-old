@@ -12,7 +12,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="config oh-my-zsh tmux.conf zshrc"    # list of files/folders to symlink in homedir
+files="config oh-my-zsh tmux tmux.conf zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
