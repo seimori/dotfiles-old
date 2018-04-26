@@ -1,6 +1,6 @@
-#############################################################
-###   TMUX Autostart taken from https://coderwall.com/p/tgm2la/auto-attach-or-start-tmux-at-login #################
-#############################################################
+#
+#####   TMUX Autostart taken from https://coderwall.com/p/tgm2la/auto-attach-or-start-tmux-at-login   #####
+#
 if [[ "$TERM" != "screen" ]] && 
         [[ "$SSH_CONNECTION" == "" ]]; then
     # Attempt to discover a detached session and attach 
@@ -24,10 +24,14 @@ else
         $MOTD
     fi
 fi
+#####   ***   #####
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+ 
+#
+#####   Oh My Zsh   #####
+#
 # Path to your oh-my-zsh installation.
   export ZSH=/home/seimori/.oh-my-zsh
 
@@ -74,7 +78,7 @@ BULLETTRAIN_CONTEXT_BG=(white)
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -94,12 +98,16 @@ BULLETTRAIN_CONTEXT_BG=(white)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git, zsh-256color
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+#####   ***   #####
+
+#
+#####   User configuration   #####
+#
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -119,6 +127,44 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+#
+#####   Improved Vi-mode for Zsh   #####
+#
+bindkey -v
+
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+        RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+	    zle reset-prompt
+    }
+
+    zle -N zle-line-init
+    zle -N zle-keymap-select
+    export KEYTIMEOUT=10
+#####   ***   #####
+
+#
+#####   Hook functions #####
+#
+# Make change of directory automatically list files (taken from https://evanhahn.com/automatically-ls-when-changing-directories-in-zsh/)
+
+chpwd() {
+	ls -a
+}
+
+#####   ***   #####
+
+# 
+#####   Aliases   #####
+# 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -127,3 +173,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cz="vim ~/.zshrc"
+alias cv="vim ~/.config/nvim/init.vim"
+alias sz="source ~/.zshrc"
+
+#####   ***   #####
