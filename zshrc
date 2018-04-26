@@ -31,10 +31,6 @@ fi
 # Path to your oh-my-zsh installation.
   export ZSH=/home/seimori/.oh-my-zsh
 
-# Powerline
-if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
-    source /usr/share/powerline/bindings/zsh/powerline.zsh
-fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
